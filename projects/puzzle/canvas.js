@@ -95,6 +95,7 @@ Puzzle.prototype = {
             var ev = event || window.event;
             var tar = ev.target || ev.srcElement;
             var dragSrc = ev.dataTransfer.getData("src");
+            console.log(1)
 
             if (dragSrc){
                 var img = new Image();
@@ -131,7 +132,8 @@ Puzzle.prototype = {
         for (let i=0; i<len; i++) {
 
             if (imgArr[i].id!= "img" + i){
-                flag = false
+                flag = false;
+                return
             }
         }
 

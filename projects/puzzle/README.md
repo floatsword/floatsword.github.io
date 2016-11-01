@@ -14,3 +14,7 @@
 **尽量使用2m以内的图片。。否则会卡。。。**
 
 <a href="https://floatsword.github.io/projects/puzzle/puzzle.html">demo</a>
+
+
+已知bug:
+每次加载新的图片以后，拼图容器的drop事件触发次数会+1，不清除原因。。
