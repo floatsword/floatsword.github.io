@@ -1,7 +1,4 @@
-
 var puzzle = null;
-
-
 var Puzzle = function(img) {
     this.canvas = document.getElementById("canvas");
     this.context = this.canvas.getContext("2d");
@@ -120,14 +117,29 @@ Puzzle.prototype = {
 
                 srcObj.src = tarObj.src;
                 srcObj.id = tarObj.id;
-
             }
-
-
-
+            self.isSuccess()
         })
+    },
 
+    isSuccess: function() {
+        var list = document.getElementById("game-box"),
+            imgLikeArr = list.querySelectorAll("img"),
+            imgArr = Array.prototype.slice.call(imgLikeArr),
+            flag = true, len=imgArr.length;
 
+        for (let i=0; i<len; i++) {
+
+            if (imgArr[i].id!= "img" + i){
+                flag = false
+            }
+        }
+
+        if (flag) {
+            setTimeout(function(){
+                alert("恭喜通关~")
+            },200)
+        }
     }
 }
 
@@ -151,7 +163,7 @@ function on (type, ele, handler) {
 
 window.onload = function() {
     var img = new Image();
-    img.src = "images/pic01.jpg";
+    img.src = "images/pic02.jpg";
     img.crossOrigin = "Anonymous";
     puzzle = new Puzzle(img);
     puzzle.init();
