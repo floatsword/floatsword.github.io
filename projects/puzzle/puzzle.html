@@ -55,11 +55,12 @@
             if (puzzle) {
                 if(!this.tips){
                     var img = new Image();
+                    var body = document.body || document.documentElement;
                     img.src = puzzle.img.src;
                     img.id = "srcImg"
                     img.onload = function() {
                         img.style.display = "block";
-                        document.body.appendChild(img);
+                        body.appendChild(img);
                     }
                     this.innerHTML = "关闭提示";
                     this.tips = true;
@@ -116,12 +117,12 @@
         function handleFile() {
             var img = new Image();
             var reader = new FileReader();
-
+            var body = document.body || document.documentElement;
             reader.readAsDataURL(this.files[0])
             reader.onload = function(e){
                 img.src = e.target.result;
                 puzzle = new Puzzle(img);
-                puzzle.init(document.body)
+                puzzle.init(body)
             }
         }
 
