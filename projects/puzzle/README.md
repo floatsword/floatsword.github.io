@@ -13,4 +13,4 @@
 
 **尽量使用2m以内的图片。。否则会卡。。。**
 
-<a href="puzzle.html">demo</a>
+<a href="https://floatsword.github.io/projects/puzzle/puzzle.html">demo</a>
