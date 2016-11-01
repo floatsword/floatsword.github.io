@@ -179,7 +179,6 @@
             reader.readAsDataURL(this.files[0])
             reader.onload = function(e){
                 img.src = e.target.result;
-
                 puzzle1 = new Puzzle(img);
                 puzzle1.init(document.body)
             }

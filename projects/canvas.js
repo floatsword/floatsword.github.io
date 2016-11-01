@@ -1,4 +1,6 @@
 
+var puzzle = null;
+
 
 var Puzzle = function(img) {
     this.canvas = document.getElementById("canvas");
@@ -112,8 +114,8 @@ Puzzle.prototype = {
                 var img = new Image();
                 img.src = dragSrc;
                 img.crossOrigin = "Anonymous"
-                var puzzle1 = new Puzzle(img);
-                puzzle1.init();
+                puzzle = new Puzzle(img);
+                puzzle.init();
                 return;
             }
 
