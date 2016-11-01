@@ -75,7 +75,7 @@ Puzzle.prototype = {
     //为拼图添加事件监听
     dragEvent: function() {
         var list = document.getElementById("game-box");
-
+        var self = this;
         //取消拖拽默认行为
         on("dragover",list,function(event) {
             var ev = event || window.event;
@@ -103,8 +103,8 @@ Puzzle.prototype = {
                 var img = new Image();
                 img.src = dragSrc;
                 img.crossOrigin = "Anonymous"
-                puzzle.img = img;
-                puzzle.init();
+                self.img = img;
+                self.init();
                 return;
             }
 
