@@ -117,8 +117,8 @@ Puzzle.prototype = {
 
                 srcObj.src = tarObj.src;
                 srcObj.id = tarObj.id;
+                self.isSuccess()
             }
-            self.isSuccess()
         })
     },
 
