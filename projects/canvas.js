@@ -107,15 +107,15 @@ Puzzle.prototype = {
             var ev = event || window.event;
             var tar = ev.target || ev.srcElement;
             var dragSrc = ev.dataTransfer.getData("src");
-            
-            // if (dragSrc){
-            //     var img = new Image();
-            //     img.src = dragSrc;
-            //     img.crossOrigin = "Anonymous"
-            //     var puzzle1 = new Puzzle(img);
-            //     puzzle1.init();
-            //     return;
-            // }
+
+            if (dragSrc){
+                var img = new Image();
+                img.src = dragSrc;
+                img.crossOrigin = "Anonymous"
+                var puzzle1 = new Puzzle(img);
+                puzzle1.init();
+                return;
+            }
 
             if (tar.nodeName.toLowerCase() === "img") {
                 var id = ev.dataTransfer.getData("id")
