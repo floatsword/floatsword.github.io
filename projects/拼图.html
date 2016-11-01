@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;margin: 0;
+        }
+        body{
+            background: #999;
+        }
+        .canvas-img{
+            width: 400px;
+        }
+        .center{
+            margin:0 auto;
+        }
+        .puzzle-list{
+            width: 900px;
+            height: 600px;
+            margin: 0 auto;
+            list-style: none;
+            position: relative;
+            border: 5px solid #333;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .puzzle-list li{
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom:5px;
+            border: 1px solid #ccc;
+        }
+        .puzzle-list li img{
+            width: 100%;
+            height: 100%;
+        }
+        #srcImg{
+            position:absolute;
+            border: 3px solid #ccc;
+            width: 200px;
+            height: 100px;
+            top: 300px;
+            right: 0;
+            display: none;
+        }
+        .pic-list{
+            list-style: none;
+            width: 1000px;
+            margin:0 auto;
+            overflow: auto;
+            text-align: center;
+        }
+        .pic-list li{
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            padding: 10px;
+            text-align: center;
+            border: 5px solid #dcc;
+            border-radius: 5px;
+            font-size: 0;
+            margin-right: 5px;
+            line-height:150px;
+        }
+        .pic-list li:after{
+            content: " ";
+            vertical-align: middle;
+        }
+        .pic-list li img{
+            max-width: 100%;max-height: 100%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body >
+    <div>
+        <input type="file" id="input-file" style="display:none">
+        <button id="addPic" type="button">添加图片</button>
+        <button id="splitPic" type="button">绘制拼图</button>
+        <button id="sortPic" type="button">打乱顺序</button>
+        <button id="lv-up" type="button">提升难度</button>
+        <button id="lv-down" type="button">降低难度</button>
+        <button id="view" type="button">查看原图</button>
+    </div>
+    <ul id="picList" class="pic-list">
+        <li class="pic-item" crossorigin="anonymous">
+            <img src="images/pic01.jpg">
+            <!-- <img class="" src="images/pixel.gif" alt=""> -->
+        </li>
+        <li class="pic-item"><img src="images/pic02.jpg"></li>
+        <li class="pic-item"><img src="images/pic03.jpg"></li>
+        <li class="pic-item"><img src="images/pic04.jpg"></li>
+    </ul>
+    <canvas id="canvas" width="700" height="600" style="border:10px solid #abc;margin:0 auto;display:none"></canvas>
+    <ul id="game-box" class="puzzle-list">
+    </ul>
+
+    <script src="canvas.js"></script>
+    <script>
+        var inputFile = document.getElementById("input-file")
+        var addPic = document.getElementById("addPic");
+        var splitPic = document.getElementById("splitPic");
+        var sortPic = document.getElementById("sortPic");
+        var lvUp = document.getElementById("lv-up")
+        var lvDown = document.getElementById("lv-down")
+        var view = document.getElementById("view")
+
+        on("click", view, function(){
+
+            if (puzzle1) {
+                if(!this.tips){
+                    var img = new Image();
+                    img.src = puzzle1.img.src;
+                    img.id = "srcImg"
+                    img.onload = function() {
+                        img.style.display = "block";
+                        document.body.appendChild(img);
+                    }
+                    this.innerHTML = "关闭提示";
+                    this.tips = true;
+                } else {
+                    this.innerHTML = "查看原图";
+                    var img = document.getElementById("srcImg");
+                    img.parentNode.removeChild(img);
+                    this.tips = false;
+                }
+
+
+            }
+        })
+        on("click", lvUp, function() {
+            if (puzzle1&&puzzle1.count<5) {
+                puzzle1.count++
+                puzzle1.init()
+            } else if (puzzle1) {
+                puzzle1.count = 5;
+                alert("太厉害了！！已经是噩梦难度了哦！")
+            }
+        })
+        on("click", lvDown, function() {
+            if (puzzle1&&puzzle1.count>3) {
+                puzzle1.count--
+                puzzle1.init()
+            } else if (puzzle1) {
+                puzzle1.count = 3;
+                alert("加油哦，你一定可以完成的")
+            }
+        })
+
+        on("click",addPic, function() {
+            inputFile.click()
+        })
+
+        on("click", sortPic, function(){
+            if (puzzle1) {
+                puzzle1.sort();
+            }
+        })
+
+        on("click", splitPic, function(){
+            if (puzzle1){
+                puzzle1.split()
+            }
+        })
+
+        on("change", inputFile,handleFile)
+
+        var puzzle1 = null;
+
+        //从input获得图片信息
+        function handleFile() {
+            var img = new Image();
+            var reader = new FileReader();
+
+            reader.readAsDataURL(this.files[0])
+            reader.onload = function(e){
+                img.src = e.target.result;
+
+                puzzle1 = new Puzzle(img);
+                puzzle1.init(document.body)
+            }
+        }
+
+        //拖拽处理图像
+        var picList = document.getElementById("picList")
+        on("dragenter",picList, function(event){
+            var ev = event || window.event;
+            ev.preventDefault()
+        })
+        on("dragover",picList, function(event){
+            var ev = event || window.event;
+            ev.preventDefault()
+        })
+        on("dragstart",picList, function(event){
+            var ev = event || window.event;
+            var tar = ev.target || ev.srcElement;
+            ev.dataTransfer.setData("src",tar.src);
+        })
+
+    </script>
+</body>
+</html>
