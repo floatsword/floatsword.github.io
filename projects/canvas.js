@@ -15,20 +15,9 @@ Puzzle.prototype = {
     constructor: Puzzle,
 
     init: function(context) {
-        // var oDiv = document.createElement("div");
-        // oDiv.style.width = this.img.width+"px";
-        // oDiv.style.height = this.img.height+"px";
-        // oDiv. classList.add("center");
-        // oDiv.appendChild(this.img);
-        // context.appendChild(oDiv);
-
-
         this.split();
         this.sort()
         this.dragEvent();
-
-
-
     },
     //利用canvas切割图片
     split: function() {
@@ -114,7 +103,7 @@ Puzzle.prototype = {
                 var img = new Image();
                 img.src = dragSrc;
                 img.crossOrigin = "Anonymous"
-                puzzle = new Puzzle(img);
+                puzzle.img = img;
                 puzzle.init();
                 return;
             }
