@@ -153,6 +153,6 @@ window.onload = function() {
     var img = new Image();
     img.src = "images/pic01.jpg";
     img.crossOrigin = "Anonymous";
-    puzzle = new puzzle(img);
+    puzzle = new Puzzle(img);
     puzzle.init();
 }
