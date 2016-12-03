@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/reset.css">
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        .scroll-demo {
+            width: 540px;
+            border: 1px solid #e5e5e5;
+            margin: 30px auto;
+            color: #666;
+            background-color: #fff;
+        }
+        /*标签切换区*/
+        .scroll-tab {
+            position: relative;
+            margin: 0;
+            height: 34px;
+            border-bottom: 1px solid #e5e5e5;
+            list-style: none;
+            padding: 0;
+            background-color: #f8f8f8;
+
+        }
+        .scroll-tab .divider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 0px;
+            width: 110px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.55);
+            border-top: 4px solid #51ACBA;
+            border-bottom: 1px solid #fff;
+        }
+        .scroll-tab .tab-item {
+            float: left;
+            line-height: 34px;
+            height: 34px;
+            width: 70px;
+            text-align: center;
+            border-right: 1px solid #e5e5e5;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+        .scroll-tab .tab-active {
+            /*background-color: #fff;*/
+            border-bottom: none;
+        }
+
+        /*滚动内容区*/
+        .scroll-wrap {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            /*overflow: hidden;*/
+        }
+        .scroll-wrap .scroll-cont {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            padding: 0px 50px;
+        }
+        .scroll-wrap .scroll-cont h3 {
+            text-align: center;
+            font: 20px/3 "Microsoft Yahei";
+            margin: 0;
+        }
+        .scroll-wrap .scroll-cont .scroll-ol {
+            line-height: 1.5;
+        }
+        .scroll-wrap .scroll-bar {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            height: 100%;
+            width: 15px;
+            background-color: #eee;
+        }
+        .scroll-wrap .scroll-bar .scroll-slider {
+            position: absolute;
+            top: 0;
+            left:2px;
+            width: 11px;
+            height: 30px;
+            background-color: #D9D3D3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 示例容器 -->
+    <div class="scroll-demo">
+        <!-- 标签切换区 -->
+        <ul class="scroll-tab">
+            <li class="tab-item tab-active">第一篇</li>
+            <li class="tab-item">第二篇</li>
+            <li class="tab-item">第三篇</li>
+            <li class="tab-item">第四篇</li>
+            <div class="divider"></div>
+        </ul>
+        <!-- 内容展示区 -->
+        <div class="scroll-wrap">
+            <!-- 文章内容区 -->
+            <div class="scroll-cont">
+                <h3 class="anchor">论爱</h3>
+                <div class="scroll-ol">
+                    当爱向你们召唤的时候，跟随着他，<br> 虽然他的路程是艰险而陡峻。
+                    <br> 当他的翅翼围卷你们的时候，屈服与他，
+                    <br> 虽然那藏在羽膈中间的剑刃也许会伤毁你们。
+                    <br> 当他对你说话的时候，信从他，
+                    <br> 虽然他的声音会把你们的梦魂击碎，如同北风吹荒了林园。
+                    <br> 爱虽给你加冠，他也把你钉在十字架上。他虽栽培你，他也刈剪你。
+                    <br> 他虽升到你的最高处，抚惜你在日中颤动的枝叶，
+                    <br> 他也要降到你的根下，摇动你的根柢的一切关节，使之归土。
+                    <br> 如同一捆稻粟，他把你束聚起来。
+                    <br> 他舂打你使你赤裸
+                    <br> 他筛分你使你脱壳
+                    <br> 他磨碾你直至洁白
+                    <br> 他揉搓你直至柔韧
+                    <br> 然后他送你到他的圣火上去，使你成为上帝圣筵上的圣饼。
+                    <br> 这些都是爱要给你们作的事情，使你知道自己心中的密秘，在这知识中你便成了"生命"心中的一屑。
+                    <br> 假如在你的疑惧中，只寻求爱的和平与逸乐，
+                    <br> 那不如掩盖你的裸露而躲过爱的筛打，
+                    <br> 而走入那没有季候的世界，在那里你将欢笑，却不是尽量的笑悦，你将哭泣，却没有流干眼泪。
+                    <br> 爱除自身外无施与，除自身外无接受
+                    <br> 爱不占有也不被占有
+                    <br> 因为爱在爱中满足了
+                    <br> 当你爱的时候，你不要说"上帝在我心中"，却要说"我在上帝的心里"
+                    <br> 不要想你能引导爱的路程，因为若是他觉得你配，他就引导你
+                    <br> 爱没有别的愿望，只要成全自己
+                    <br> 但若是你爱，而且需求愿望，就让以下的作你的愿望吧：
+                    <br> 溶化了你自己，象溪流般对清夜吟唱着歌曲
+                    <br> 要知道过度温存的痛苦
+                    <br> 让你对于爱的了解毁伤了你自己
+                    <br> 而且甘愿地喜乐地流血
+                    <br> 清晨醒起，以喜扬的心来致谢这爱的又一日
+                    <br> 日中静息，默念爱的浓欢
+                    <br> 晚潮退时，感谢地回家
+                    <br> 然后在睡时祈祷，因为有被爱者在你的心中，有赞美之歌在你的唇上
+                    <br>
+                </div>
+                <h3 class="anchor">论孩子</h3>
+                <div class="scroll-ol">
+                    你们的孩子，都不是你们的孩子，<br> 乃是“生命”为自己所渴望的儿女。
+                    <br> 他们是借你们而来，却不是从你们而来，
+                    <br> 他们虽和你们同在，却不属于你们。
+                    <br> 你们可以给他们以爱，却不可给他们以思想，
+                    <br> 因为他们有自己的思想。
+                    <br> 你们可以荫庇他们的身体，却不能荫庇他们的灵魂，
+                    <br> 因为他们的灵魂，是住在“明日”的宅中，那是你们在梦中也不能想见的。
+                    <br> 你们可以努力去模仿他们，却不能使他们来象你们，
+                    <br> 因为生命是不倒行的，也不与“昨日”一同停留。
+                    <br> 你们是弓，你们的孩子是从弦上发出的生命的箭矢。
+                    <br> 那射者在无穷之中看定了目标，也用神力将你们引满，使他的箭矢迅疾而遥远地射了出去。
+                    <br> 让你们在射者手中的“弯曲”成为喜乐吧；
+                    <br> 因为他爱那飞出的箭，也爱了那静止的弓。
+                    <br>
+                </div>
+                <h3 class="anchor">论理性与热情</h3>
+                <div class="scroll-ol">
+                    你的心灵常常是个战场，在战场上，你的“理性与判断”和你的“热情与嗜欲”开战<br> 我恨不能在你的心灵中作一个调停者，使我可以让你们分子从竞争与衅隙变成合一与和鸣。
+                    <br> 但除了你们自己也作个调停者，作个你们心中的各分子的爱者之外，我又能做什么呢
+                    <br> 你们的理性与热情，是你航行的灵魂的舵和帆。
+                    <br> 假如你的帆或舵破坏了，你们只能泛荡，漂流，或在海中停住。
+                    <br> 因为理性独自统治，是一个禁锢的权力，热情不小心的时候，是一个自焚的火焰。
+                    <br> 因此，让你们的心灵将理性升到热情 之最高点，让它歌唱；br 也让他用理性来引导你们的热情，让他在每日复活中生存，如同大鸾在它自己的灰烬上高翔。
+                    <br> 我愿你们把判断和嗜欲，当作你们家中的两位佳客。
+                    <br> 你们自然不能敬礼一客过于他客；因为过分关心于任何一客，必要失去两客的友爱与忠诚。
+                    <br> 在万山中，当你坐在白杨的凉荫下，享受那远田和原野的宁静与和平——应当让你的
+                    <br> 心在沉静中说：上帝安息在理性中。
+                    <br> 心在沉静中说：上帝安息在理性中。
+                    <br> 当飓暴卷来的时候，狂风震撼林木，雷电宣告苍穹的威严，——应当让你的心在敬畏中说：
+                    <br>上帝运行在热情里。<br> 只因你们是上帝大气中之一息，是上帝丛林中之一叶，你们也要和他一同安息在理性中，运行在热情里。
+                    <br>
+                </div>
+                <h3 class="anchor">论自知</h3>
+                <div class="scroll-ol">
+                    在宁静中，你的心知道了白日和黑夜的奥秘。<br> 但你的耳朵渴求听取你心的知识的声音。
+                    <br> 你常在意念中所了解的，你愿能从语言中知道。
+                    <br> 你愿能用手指去抚触你的赤裸的灵魂。
+                    <br> 你要这样做是好的。
+                    <br> 你心灵隐秘的涌泉，必须升溢，吟唱着奔向大海；
+                    <br> 你无穷深出的宝藏，必须在你目前呈现。
+                    <br> 但不要用称来衡量你未知的珍宝；
+                    <br> 也不要用杖竿和响带去探测你知识的浅深。
+                    <br> 因为自我乃是一个无边的海。
+                    <br> 不要说我找到了真理，只要说我找到了一条真理。 <br> 不要说我找到了灵魂的道路。只要说，我遇见了灵魂在我的道路上行走。
+                    <br> 因为灵魂在一切道路上行走。
+                    <br> 灵魂不止在一条道路上走，也不是芦草似的生长。
+                    <br> 灵魂象一朵千瓣的莲花，自己开放着。
+                    <br>
+                </div>
+            </div>
+            <!-- 滚动条区 -->
+            <div class="scroll-bar">
+                <div class="scroll-slider"></div>
+            </div>
+        </div>
+
+    </div>
+
+<script src="../../static/jquery.js"></script>
+<script src="./static/main.js"></script>
+</body>
+
+</html>
