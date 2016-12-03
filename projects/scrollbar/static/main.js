@@ -24,8 +24,6 @@ const Scroll = {};
                 this._bindMouseWheel();
                 this._initTabEvent();
 
-
-
         },
         /**
          * 初始化DOM
@@ -144,9 +142,11 @@ const Scroll = {};
                 this.$cont.stop().animate({
                     scrollTop: pos
                 })
+                return this;
             }
 
             this.$cont.scrollTop(pos)
+            return this;
 
         },
 
@@ -162,13 +162,11 @@ const Scroll = {};
 
                 anchorPosition.forEach(function(item, index) {
                     if (contScrollTop >= item) {
-                        self._changeActiveItem(index)
+                        // self._changeActiveItem(index)
                     }
                 })
 
                 $slider.css('top', self.getSliderPosition());
-
-
 
             })
         }
