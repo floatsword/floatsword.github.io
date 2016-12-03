@@ -162,7 +162,7 @@ const Scroll = {};
 
                 anchorPosition.forEach(function(item, index) {
                     if (contScrollTop >= item) {
-                        // self._changeActiveItem(index)
+                        self._changeActiveItem(index)
                     }
                 })
 
