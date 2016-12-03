@@ -75,11 +75,8 @@ const Scroll = {};
             var tabItem = this.$tabItem;
             var self = this;
             var anchor = this.$anchor;
-            var anchorPosition = [];
+            var anchorPosition = this.getAnchorPosition();
 
-            anchor.each(function() {
-                anchorPosition.push($(this).position().top)
-            })
 
             tabItem.on('click', function() {
                 var index = $(this).index();
@@ -100,7 +97,14 @@ const Scroll = {};
                 left: index * 111 + 'px'
             }, 500)
         },
-
+        //获取锚点的top值
+        getAnchorPosition: function() {
+            var position = [];
+            this.$anchor.each(function() {
+                position.push($(this).position().top)
+            })
+            return position;
+        },
         //绑定鼠标滚轮事件
         _bindMouseWheel: function() {
             var self = this;
@@ -135,7 +139,7 @@ const Scroll = {};
 
         //滚动内容到指定高度
         scrollTo: function(pos, animation) {
-            
+
             if (typeof animation === 'boolean' && animation) {
                 this.$cont.stop().animate({
                     scrollTop: pos
@@ -150,10 +154,22 @@ const Scroll = {};
         _bindContScroll: function() {
             var $cont = this.$cont,
                 $slider = this.$slider,
-                self = this;
+                self = this,
+                anchorPosition = this.getAnchorPosition();
 
             $cont.on('scroll', function(e) {
-                $slider.css('top', self.getSliderPosition())
+                var contScrollTop = $(this).scrollTop();
+
+                anchorPosition.forEach(function(item, index) {
+                    if (contScrollTop >= item) {
+                        self._changeActiveItem(index)
+                    }
+                })
+
+                $slider.css('top', self.getSliderPosition());
+
+
+
             })
         }
     })
