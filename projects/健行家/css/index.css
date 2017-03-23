@@ -1,0 +1,212 @@
+.h50 {
+    height: 50px;
+}
+.h40 {
+    height: 40px;
+}
+#banner {
+    width: 100%;
+
+}
+.slider {
+    position: relative;
+
+}
+.slider-main {
+
+}
+.slider-list {
+    height: 500px;
+}
+.slider-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 500px;
+
+}
+.slider-item a {
+    display: inline-block;
+    width: 100%;
+
+    height: 500px;
+
+}
+.slider-item a img {
+    display: inline-block;
+
+    vertical-align: bottom;
+
+    width: 100%;
+    height: 500px;
+}
+
+.slider-indicator {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 25px;
+}
+.slider-indicator ul{
+    display: inline-block;
+}
+
+.slider-indicator ul li {
+    margin: 0 5px;
+    float: left;
+    color: #333;
+    width: 20px;height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #FCFCFC;
+    cursor: pointer;
+}
+.slider-indicator ul li.on {
+    background-color: #ff7f0f;
+    color: #FCFCFC;
+}
+
+#content {
+    background-color: #ececec;
+}
+
+#content .fbox {
+
+}
+.fbox .box-l {
+    line-height: 0;
+    width: 240px;
+}
+.fbox .box-m {
+    line-height: 0;
+}
+.fbox .box-m img {
+    width: 480px;
+    height: 504px;
+}
+.fbox .box-l a, .fbox .box-m a, .fbox .box-r ul li a {
+    display: inline-block;
+}
+.fbox .box-l img {
+    width: 240px;
+}
+.fbox .box-r ul {
+    width: 480px;
+}
+.fbox .box-r ul li {
+    float: left;
+    line-height: 0;
+    border: 1px solid #ececec;
+}
+.fbox .box-r ul li img {
+    width: 238px;
+    height: 250px;
+}
+.fbox .fmore {
+    background-color: #fff;
+    height: 45px;
+    line-height: 45px;
+}
+.fbox .fmore a {
+    display: block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.adbox {
+    margin-top: 40px;
+    height: 104px;
+}
+.right-fixed {
+    width: 40px;
+    position: fixed;
+    top: 230px;
+    left: 50%;
+    margin-left: 610px;
+}
+.right-fixed li {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    background-color: #fff;
+
+}
+.right-fixed li a {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.right-fixed li.on a span {
+    background-color: #ff7f0f;
+    color: #fff;
+}
+.right-fixed li a span {
+    display: inline-block;
+    width: 40px;height: 40px;
+    position: absolute;
+    background-color: #fff;
+
+}
+.right-fixed li a span.flevel {
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+.right-fixed li a span.fdesc {
+    top: 0;
+    left: 40px;
+    text-align: center;
+    width: 24px;
+    font-size: 12px;
+    padding: 0 8px;
+}
+
+.right-fixed li a span.ico {
+    display: block;
+    margin: 12px 11px;
+    width: 18px;
+    height: 16px;
+    background: #fff url(./images/r-ico.png) no-repeat;
+}
+.right-fixed li.side-cart a span.ico {
+    background-position: 0 0;
+}
+.right-fixed li.side-tel a span.ico {
+    height: 14px;
+    background-position: 0 -16px;
+}
+.right-fixed li.side-home a span.ico {
+    background-position: 0 -30px;
+}
+.right-fixed li.back-top a span.ico {
+    margin-top: 16px;
+    height: 8px;
+    background-position: 0 -46px;
+}
+.side-tel {
+    position: relative;
+}
+.right-fixed .side-tel a {
+    overflow: visible;
+    color: #999;
+}
+.side-tel span.tel-num {
+    background: #fff;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    /*display: none;*/
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
