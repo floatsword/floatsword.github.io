@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>拼图小游戏~</title>
     <link rel="stylesheet" href="styles/main.css">
+
 </head>
 <body >
 
@@ -40,7 +41,7 @@
 
     <canvas id="canvas" width="700" height="600" style="border:10px solid #abc;margin:0 auto;display:none"></canvas>
 
-    <script src="canvas.js"></script>
+    <script src="./scripts/canvas.js"></script>
 
     <script>
         var inputFile = document.getElementById("input-file")
@@ -130,15 +131,18 @@
         var picList = document.getElementById("picList")
         on("dragenter",picList, function(event){
             var ev = event || window.event;
+            console.log('dragEnter')
             ev.preventDefault()
         })
         on("dragover",picList, function(event){
             var ev = event || window.event;
+            console.log('drapOver')
             ev.preventDefault()
         })
         on("dragstart",picList, function(event){
             var ev = event || window.event;
             var tar = ev.target || ev.srcElement;
+            
             ev.dataTransfer.setData("src",tar.src);
         })
 
