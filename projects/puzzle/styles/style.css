@@ -1,6 +1,5 @@
 html, body {
     height: 100%;
-    font-family: 'Microsoft Yahei';
     background-color: #FF9966;
 }
 ul, ol {
@@ -13,11 +12,9 @@ ul, ol {
 }
 .puzzle_box {
     height: auto;
-    padding: 30px;
     margin: 0 auto;
     margin-top: 5rem;
 }
-
 
 .p_list {
     width: 80%;

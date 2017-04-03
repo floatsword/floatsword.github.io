@@ -16,6 +16,7 @@
         <div class="btn-group btn-group-justified">
             <a href="#!" class="btn btn-sm btn-danger" id="add_pic">添加图片</a>
             <a href="#!" class="btn btn-sm btn-danger" id="introduce">游戏介绍</a>
+            <a href="#!" class="btn btn-sm btn-danger" id="upset">打乱</a>
             <a href="#!" class="btn btn-sm btn-danger" id="walkthrough">攻略</a>
             <a href="#!" class="btn btn-sm btn-danger" id="get_tip">提示</a>
             <a href="#!" class="btn btn-sm btn-danger" id="view_pic">看一眼</a>
@@ -58,6 +59,10 @@
     var modal = $('#modal'),
         list = $('.p_list').get(0);
 
+    $('#upset').on('click', function() {
+        puzzle.sort();
+        puzzle.renderPuzzle();
+    })
     $('#introduce').click(function() {
         _triggerModal(`
                 <h4>游戏介绍</h4>
