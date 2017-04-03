@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拼图小游戏</title>
+    <link rel="stylesheet" href="./styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="menubar">
+        <input type="file" id="load_file" value="添加图片" style="display:none">
+        <div class="btn-group btn-group-justified">
+            <a href="#!" class="btn btn-sm btn-danger" id="add_pic">添加图片</a>
+            <a href="#!" class="btn btn-sm btn-danger" id="introduce">游戏介绍</a>
+            <a href="#!" class="btn btn-sm btn-danger" id="walkthrough">攻略</a>
+            <a href="#!" class="btn btn-sm btn-danger" id="get_tip">提示</a>
+            <a href="#!" class="btn btn-sm btn-danger" id="view_pic">看一眼</a>
+        </div>
+    </div>
+
+    <div class="puzzle_box">
+        <ul class="p_list row">
+
+        </ul>
+    </div>
+    <br>
+    <canvas id="canvas" style="border: 1px solid #111; display:none"></canvas>
+    <!-- 模态 -->
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./scripts/bootstrap.js"></script>
+<script src="./scripts/sortable.js"></script>
+<script src="./scripts/puzzle.js"></script>
+<script>
+    $('#add_pic').click(function() {
+        $('#load_file').click()
+    })
+
+
+    var modal = $('#modal'),
+        list = $('.p_list').get(0);
+
+    $('#introduce').click(function() {
+        _triggerModal(`
+                <h4>游戏介绍</h4>
+                <p>点击左上角添加图片，可以添加手机或者PC中自己的图片进行拼图游戏</p>
+                <p>加载后的列表过长的话，可以按住左右两侧的空白处进行滑动</p>
+                <p>由于base64的长度原因，在玩家上传过大图片时会导致浏览器卡顿，因此限制了上传图片的大小为1M</p>
+
+            `)
+    })
+    $('#walkthrough').on('click', function() {
+        _triggerModal(`
+                <p>想要快速的将图片完成，最好的方式是由左上角开始，从左到右从上到下进行拼图排列</p>
+            `)
+    })
+
+    $('#view_pic').on('click', function() {
+        _triggerModal(puzzle.img)
+    });
+
+    $('#get_tip').on('click', function() {
+        puzzle.tip();
+    })
+
+    $('#load_file').on('change', function(evt) {
+
+        var file = this.files[0];
+
+        if (file.type.substr(0,5) !== 'image') {
+            _triggerModal('<p>您载入的文件不是图片</p>')
+        }else {
+            if (typeof FileReader === 'undefined') {
+                _triggerModal('<p>您的浏览器不支持fileReader接口</p>')
+            } else {
+                var reader = new FileReader();
+                if (file.size < 1000000) {
+                    reader.readAsDataURL(file);
+                    reader.onload = function(evt) {
+                        var img = new Image();
+                        img.src = evt.target.result;
+                        puzzle = null;
+                        puzzle = new Puzzle(img, '.p_list')
+                    }
+
+                } else {
+                    _triggerModal('<p>请选择1M以内的图片进行游戏</p>')
+                }
+
+            }
+        }
+
+
+
+
+    })
+
+    new Sortable(list, {
+        animation: 150,
+        handler: '.my-handle',
+        filter : '.com-sm-4',
+        onEnd: function(evt) {
+            var nowList = evt.target.children,
+                len = nowList.length,
+                isSuccess = false;
+                console.log(nowList);
+
+            for (var i =0; i<len; i++) {
+
+                if (nowList[i].id != i) {
+                    return
+                }
+            }
+
+            isSuccess = true;
+
+            setTimeout(function() {
+                _triggerModal('<p>成功啦</p>')
+            },200)
+
+        }
+    }),
+
+    _triggerModal =  function(cont) {
+
+            $('#modal').find('.modal-body').text('').append($(cont)).end().modal()
+
+    }
+
+    $(function() {
+        var img = new Image();
+        img.src = './../images/pic02.jpg';
+        img.crossOrigin = "Anonymous";
+        puzzle = new Puzzle(img, '.p_list');
+    })
+</script>
+</body>
+</html>

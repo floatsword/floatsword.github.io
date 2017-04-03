@@ -1,0 +1,118 @@
+html, body {
+    height: 100%;
+    font-family: 'Microsoft Yahei';
+    background-color: #FF9966;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menubar {
+    margin-top: 1rem;
+}
+.puzzle_box {
+    height: auto;
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+
+.p_list {
+    width: 80%;
+    margin: 0 auto;
+}
+.p_list li {
+    position: relative;
+    display: inline-block;
+    height: auto;
+    border: 1px solid #EEE;
+    padding: 0;
+}
+.p_list li img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+.modal span.close {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+.modal-content img {
+    width: 100%;
+}
+@media screen and (max-width:600px) {
+
+    .p_list {
+        width: 100%;
+        margin: 0;
+    }
+    .p_list li  {
+        width: 33%;
+        float: left;
+    }
+}
+
+
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 15deg);
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -10deg);
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 5deg);
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+.swing {
+  -webkit-animation: swing 0.5s both;
+  animation: swing 0.5s both;
+}
